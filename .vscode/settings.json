@@ -4,5 +4,13 @@
   "Lua.diagnostics.globals": ["playdate", "import"],
   "Lua.runtime.nonstandardSymbol": ["+=", "-=", "*=", "/="],
   "Lua.workspace.library": ["$PLAYDATE_SDK_PATH/CoreLibs"],
-  "Lua.workspace.preloadFileSize": 1000
+  "Lua.workspace.preloadFileSize": 1000,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "args": ["-ExecutionPolicy", "Bypass"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
 }

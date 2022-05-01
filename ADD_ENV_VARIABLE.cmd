@@ -1,6 +1,6 @@
 :: CHANGE PATH HERE
 :: %userprofile% is path to your user folder in C:/user/
-set SDKPATH="%userprofile%\Documents\PlaydateSDK"
+set SDKPATH="C:\Users\the_m\Code\PlaydateSDK"
 
 @echo off
 :: BatchGotAdmin

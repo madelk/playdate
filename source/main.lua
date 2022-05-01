@@ -1,3 +1,7 @@
+import "CoreLibs/object"
+import "CoreLibs/graphics"
+import "CoreLibs/sprites"
+import "CoreLibs/timer"
 import "dvd" -- DEMO
 local dvd = dvd(1, -1) -- DEMO
 
@@ -8,6 +12,11 @@ local function loadGame()
 	playdate.display.setRefreshRate(50) -- Sets framerate to 50 fps
 	math.randomseed(playdate.getSecondsSinceEpoch()) -- seed for math.random
 	gfx.setFont(font) -- DEMO
+	-- gfx.sprite.setBackgroundDrawingCallback(
+	-- 	function(x,y,width,height)
+	-- 		backgroundImage:draw(0,0)
+	-- 	end
+	-- )
 end
 
 local function updateGame()
@@ -25,4 +34,5 @@ function playdate.update()
 	updateGame()
 	drawGame()
 	playdate.drawFPS(0,0) -- FPS widget
+	gfx.sprite.update()
 end

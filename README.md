@@ -15,3 +15,8 @@
     * Change keybind for `Tasks: Run Build Task` (I've changed to **F5**)  
 0. Your can find your `main.lua` file inside `source` folder. Press your "Run Build Task" button, you should see "Template" text in playdate simulator.  
 0. Feel free to delete `dvd.lua` and all dvd-related lines from `main.lua` (marked `-- DEMOO`)
+
+
+https://sdk.play.date/1.9.0/Inside%20Playdate.html
+
+https://playdate-wiki.com/wiki/SDK_Resources

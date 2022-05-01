@@ -1,5 +1,7 @@
-import "CoreLibs/graphics"
 import "CoreLibs/object"
+import "CoreLibs/graphics"
+import "CoreLibs/sprites"
+import "CoreLibs/timer"
 
 local gfx <const> = playdate.graphics
 
@@ -12,35 +14,23 @@ function dvd:init(xspeed, yspeed)
 		xspeed = xspeed,
 		yspeed = yspeed,
 		width = 100,
-		height = 20
+		height = 45
 	}
-end
-
-function dvd:swapColors()
-	if (gfx.getBackgroundColor() == gfx.kColorWhite) then
-		gfx.setBackgroundColor(gfx.kColorBlack)
-		gfx.setImageDrawMode("inverted")
-	else
-		gfx.setBackgroundColor(gfx.kColorWhite)
-		gfx.setImageDrawMode("copy")
-	end
+	local dvdSpriteReady = gfx.image.new("images/dvd")
+	local dvdSprite = gfx.sprite.new(dvdSpriteReady)
+	dvdSprite:moveTo(self.label.x, self.label.y)
+	dvdSprite:add()
+	self.dvdSprite = dvdSprite
 end
 
 function dvd:update()
     local label = self.label;
-    local swap = false
-	if (label.x + label.width >= 400 or label.x <= 0) then
+	if (label.x + (label.width /2) >= 400 or label.x- (label.width /2) <= 0) then
         label.xspeed = -label.xspeed;
-		swap = true
     end
         
-    if (label.y + label.height >= 240 or label.y <= 0) then
+    if (label.y + (label.height /2) >= 240 or label.y- (label.height /2) <= 0) then
         label.yspeed = -label.yspeed;
-		swap = true
-	end
-
-	if (swap) then
-		self:swapColors()
 	end
 
 	label.x += label.xspeed
@@ -49,5 +39,7 @@ end
 
 function dvd:draw()
     local label = self.label;
-    gfx.drawTextInRect("Template", label.x, label.y, label.width, label.height)
+    local dvdSprite = self.dvdSprite;
+	dvdSprite:moveTo(label.x, label.y)
+    -- gfx.drawTextInRect("Template", label.x, label.y, label.width, label.height)
 end

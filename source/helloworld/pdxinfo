@@ -1,0 +1,6 @@
+name=HelloWorld
+author=Mark Dell
+description=Hello World
+bundleID=com.madelk.helloworld
+version=0.0.1
+buildNumber=1

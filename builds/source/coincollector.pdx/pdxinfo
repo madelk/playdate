@@ -1,0 +1,9 @@
+name=CoinCollector
+author=Mark Dell
+description=Coin Collector
+bundleID=com.madelk.coincollector
+version=0.0.1
+buildNumber=1
+imagePath=images
+pdxversion=11000
+buildtime=704754154

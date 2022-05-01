@@ -8,13 +8,22 @@ local gfx <const> = playdate.graphics
 class("dvd").extends()
 
 function dvd:init(xspeed, yspeed)
+	local width = 100
+	local height = 46 -- make it even
+	local minx = width /2
+	local maxx = 400 - (width /2)
+	local miny = height /2
+	local maxy = 240 - (height /2)
+	local x = math.random(minx, maxx)
+	local y = math.random(miny, maxy)
+
     self.label = {
-		x = 155,
-		y = 110,
+		x = x,
+		y = y,
 		xspeed = xspeed,
 		yspeed = yspeed,
-		width = 100,
-		height = 45
+		width = width,
+		height = height
 	}
 	local dvdSpriteReady = gfx.image.new("images/dvd")
 	local dvdSprite = gfx.sprite.new(dvdSpriteReady)
@@ -23,6 +32,35 @@ function dvd:init(xspeed, yspeed)
 	self.dvdSprite = dvdSprite
 end
 
+
+function dvd:updateSpeed(faster)
+	local adjustment = 0.1
+	local limit = 5
+    local label = self.label;
+	if (faster) then
+		if (label.xspeed>0 and label.xspeed < limit) then
+			label.xspeed += adjustment
+		elseif (label.xspeed <0 and label.xspeed > -limit) then
+			label.xspeed -= adjustment
+		end
+		if (label.yspeed>0 and label.yspeed < limit) then
+			label.yspeed += adjustment
+		elseif (label.yspeed <0 and label.yspeed > -limit) then
+			label.yspeed -= adjustment
+		end
+	else
+		if (label.xspeed>0 and label.xspeed > adjustment) then
+			label.xspeed -= adjustment
+		elseif (label.xspeed <0 and label.xspeed < -adjustment) then
+			label.xspeed += adjustment
+		end
+		if (label.yspeed>0 and label.yspeed > adjustment) then
+			label.yspeed -= adjustment
+		elseif (label.yspeed <0 and label.yspeed < -adjustment) then
+			label.yspeed += adjustment
+		end
+	end
+end
 function dvd:update()
     local label = self.label;
 	if (label.x + (label.width /2) >= 400 or label.x- (label.width /2) <= 0) then

@@ -1,8 +1,9 @@
-name=Template
-author=You
-description=This is template project
-bundleID=com.organization.package
+name=DVDVideo
+author=Mark Dell
+description=Come on DVD Video
+bundleID=com.madelk.dvdvideo
 version=0.0.1
 buildNumber=1
+imagePath=images
 pdxversion=11000
-buildtime=704689807
+buildtime=704740256

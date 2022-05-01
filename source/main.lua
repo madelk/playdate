@@ -2,6 +2,7 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
+import "CoreLibs/crank"
 import "dvd" -- DEMO
 local dvd = dvd(1, -1) -- DEMO
 
@@ -20,6 +21,8 @@ local function loadGame()
 end
 
 local function updateGame()
+	local cranked = playdate.getCrankChange()
+	if (cranked> 0) then dvd:updateSpeed(true) elseif (cranked <0) then dvd:updateSpeed(false) end
 	dvd:update() -- DEMO
 end
 
